@@ -1,0 +1,120 @@
+<div class="container-fluid">
+    <!-- <h3 class="text-dark mb-4">Team</h3> -->
+    <div class="row">
+        <div class="col-md-6 col-xl-3 mb-4" (click)="callFun('Large Cap')" id="capHead"  > 
+            <div class="card shadow border-left-primary py-2" [ngStyle]="{'background-color': marketCap=='Large Cap' ? 'lavender' : null}"  style="cursor:pointer;" >
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col mr-2">
+                            <div class="text-uppercase text-primary font-weight-bold text-s mb-1"><span >Large Cap</span></div>
+                            <!-- <div class="text-dark font-weight-bold h5 mb-0"><span>$40,000</span></div> -->
+                        </div>
+                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4" (click)="callFun('Mid Cap')" id="capHead">
+            <div class="card shadow border-left-success py-2" style="cursor:pointer;" [ngStyle]="{'background-color': marketCap=='Mid Cap' ? 'lavender' : null}" >
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col mr-2">
+                            <div class="text-uppercase text-success font-weight-bold text-s mb-1"><span>Mid Cap</span></div>
+                            <!-- <div class="text-dark font-weight-bold h5 mb-0"><span>$215,000</span></div> -->
+                        </div>
+                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4" (click)="callFun('Small Cap')" id="capHead">
+            <div class="card shadow border-left-info py-2" style="cursor:pointer;" [ngStyle]="{'background-color': marketCap=='Small Cap' ? 'lavender' : null}">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col mr-2">
+                            <div class="text-uppercase text-info font-weight-bold text-s mb-1"><span>Small Cap</span></div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4" (click)="getRecommendations(stocks[0].marketCap)" id="capHead"  *ngIf="stocks!=null">
+            <div class="card shadow border-left-success py-2" style="cursor:pointer;">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col mr-2">
+                            <div class="text-uppercase text-success font-weight-bold text-s mb-1"><span>Top 5 <span>{{stocks[0].marketCap}}</span></span></div>
+                        </div>
+                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div  *ngIf="stocks==null && !loading"> Click one of the above </div>
+    <div class="row" *ngIf="loading"><div class="spinner-border text-primary mb-3" ></div></div>
+
+    <div class="card shadow" *ngIf="stocks!=null"> 
+        <div class="card-header py-3">
+            <p *ngIf="stocks!=null"  class="text-primary m-0 font-weight-bold">{{stocks[0].marketCap}}</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                
+                <div class="col-md-6 text-nowrap">
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-right dataTables_filter" id="dataTable_filter">
+                        <label>
+                        <input type="search"  (input)="searchFilter($event)"  class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search">
+                    </label></div>
+                </div>
+            </div>
+            
+            <div *ngIf="stocks!=null"  class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Name</th>
+                            <th>Market Open Price</th>
+                            <th>Current Price</th>
+                            <th>Quantity</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="stocks!=null">
+                        <tr *ngFor="let stock of stocks">
+                            <td>{{stock.stockSymbol}}</td>
+                            <td>{{stock.stockName}}</td>
+                            <td>{{stock.marketOpenPrice}}</td>
+                            <td>{{stock.currentPrice}}</td>
+                            <td><input type="number" (keyup)="onKey($event)"></td>
+                            <td > <button class=" btn btn-primary" (click)="saveStock(stock)">Save</button></td>
+                            <!-- <td *ngIf="saved">Saved</td> -->
+                        </tr>
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><strong>Symbol</strong></td>
+                            <td><strong>Name</strong></td>
+                            <td><strong>Market Open Price</strong></td>
+                            <td><strong>Current Price</strong></td>
+                           
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>

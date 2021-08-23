@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <!-- <h3 class="text-dark mb-4">Team</h3> -->
+
+    <div class="row" *ngIf="loading"><div class="spinner-border text-primary mb-3" ></div></div>
+
+    <div class="card shadow" *ngIf="stocks!=null"> 
+        <div class="card-header py-3">
+            <p  *ngIf="stocks!=null"  class="text-primary m-0 font-weight-bold">Saved Stocks</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                
+                
+                <div class="col-md-6">
+                
+                </div>
+            </div>
+            
+            <div *ngIf="stocks!=null"  class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Saved Price</th>
+                            <th>Current Price</th>
+                            <th>Quantity</th>
+                            <th>Time Stamp</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="stocks!=null">
+                        <tr *ngFor="let stock of stocks"  >
+                            <!-- <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg">Airi Satou</td> -->
+                            <td>{{stock.stock_symbol}}</td>
+                            <td>{{stock.current_price}}</td>
+                            <td>{{prices.get(stock.stock_symbol)}}</td>
+                            <td>{{stock.quantity}}</td>
+                            <td>{{stock.priceTime}}</td>
+                            <td *ngIf="!deleted"> <button class=" btn btn-primary" (click)="deleteStock(stock)">Delete</button></td>
+                            <td *ngIf="deleted">Deleted</td>
+                        </tr>
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><strong>Symbol</strong></td>
+                            <td><strong>Saved Price</strong></td>
+                            <th>Current Price</th>
+                            <th>Quantity</th>
+
+                            <th>Time Stamp</th>
+
+                           
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                </div>
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-cngontent-lg-end dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

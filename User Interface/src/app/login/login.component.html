@@ -1,0 +1,152 @@
+<!-- <div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-0 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h1 class="login-heading mb-4">Welcome back!</h1>
+              <form *ngIf="!isLoggedIn"
+              name="form"
+              (ngSubmit)="f.form.valid && onSubmit()"
+              #f="ngForm"
+              >
+                <div class="form-label-group">
+                  <input type="text"
+                  class="form-control"
+                  placeholder="username"
+                  [(ngModel)]="form.username"
+                  id="inputEmail"
+                  required autofocus
+                  name="username"
+                  #username="ngModel">
+                  <label for="inputEmail">Username</label>
+                </div>
+
+                <div class="form-label-group">
+                  <input  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="password"
+                  [(ngModel)]="form.password"
+                  required
+                  id="inputPassword"
+                  #password="ngModel">
+                  <label for="inputPassword">Password</label>
+                </div>
+               
+                <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" >Sign in</button>
+               
+              </form>
+              <div class="error_message" *ngIf="error">Login Failed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 mx-auto my-5">
+                <section class="form-elegant">
+                  <div>
+                    <div class="mx-4">
+                      <!--Header-->
+                      <div class="text-center">
+                        <h3 class="dark-grey-text mb-5">
+                          <strong>Sign in</strong>
+                        </h3>
+                      </div>
+            
+                      <form   *ngIf="!isLoggedIn"
+                      name="form"
+                      (ngSubmit)="f.form.valid && onSubmit()"
+                      #f="ngForm"
+                      novalidate>
+                        <div class="md-form">
+                          <input   type="text"
+                          class="form-control"
+                          name="username"
+                          [(ngModel)]="form.username"
+                          required
+                          #username="ngModel" >
+                          <label for="elegantFormEmailEx">Username</label>
+                        </div>
+            
+                        <div class="md-form pb-3">
+                          <input     type="password"
+                          class="form-control"
+                          name="password"
+                          [(ngModel)]="form.password"
+                          required
+                          minlength="6"
+                          #password="ngModel">
+                          <label for="elegantFormPasswordEx">Password</label>
+                          
+                        </div>
+                        <div class="text-center mb-3">
+                          <button type="submit"  gradient="blue" block="true" rounded="true" class="btn btn-outline-secondary" 
+                           >Sign in</button>
+                        </div>
+
+                     
+                      </form>
+                 
+                      <!--Body-->
+                      
+            
+                    </div>
+                    
+                    <div *ngIf="error" class="text-center mb-3" id="errormsg">
+                      Login Failed. Please check your username and password.
+                      </div>
+                   
+                  </div>
+            
+                </section>
+              </div>
+            </div>
+            <!--<div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <h1 class="login-heading mb-4">Welcome back!</h1>
+                <form #loginForm="ngForm">
+                  <div class="form-label-group">
+                    <input type="email" name="username" ngModel id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <label for="inputEmail">Email address</label>
+                  </div>
+  
+                  <div class="form-label-group">
+                    <input type="password" name="password" ngModel id="inputPassword" class="form-control" placeholder="Password" required>
+                    <label for="inputPassword">Password</label>
+                  </div>
+  
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Remember password</label>
+                  </div>
+                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" 
+                  input type="submit" (click)="login(loginForm)">Sign in</button>
+                  <div class="text-center">
+                    <a class="small" href="#">Forgot password?</a></div>
+                </form>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <router-outlet></router-outlet>
+  
+
